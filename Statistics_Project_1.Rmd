@@ -5,15 +5,34 @@ date: "April 1, 2017"
 output: pdf_document
 ---
 
-```{r setup, include=TRUE}
+```{r setup}
 knitr::opts_chunk$set(echo = TRUE)
 library(readxl)
 sheet = read_excel("MTH_361_Project_1_Data.xlsx")
 ```
 
+*Part 1: Clearly state what you are investigating*
+
+We are investigating Portland's Trail Blazers' scores and verifying whether their scores at home games are greater than those of away games.
+
+$H_0: \mu_{home} = \mu_{away}$
+
+$H_a: \mu_{home} > \mu_{away}$
+
+*Part 2*
+
+The group selected...
+
+*Part 3: Collect your data!*
+
 ```{r}
 home = sheet$home; away = sheet$away
 home.mean = mean(home); away.mean = mean(away)
 home.mean; away.mean
+home.sd = sd(home); away.sd = sd(away)
+home.sd; away.sd
 
 ```
+
+The mean for home games is `r home.mean` while the away game mean is `r away.mean`.
+As for standard deviation, the statistics are `r home.sd` and `r away.sd`, respectively.
