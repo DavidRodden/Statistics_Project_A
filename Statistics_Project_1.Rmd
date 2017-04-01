@@ -5,6 +5,15 @@ date: "April 1, 2017"
 output: pdf_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
+library(readxl)
+sheet = read_excel("MTH_361_Project_1_Data.xlsx")
+```
+
+```{r}
+home = sheet$home; away = sheet$away
+home.mean = mean(home); away.mean = mean(away)
+home.mean; away.mean
+
 ```
