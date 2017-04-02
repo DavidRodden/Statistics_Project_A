@@ -4,34 +4,42 @@ author: "David Rodden"
 date: "April 1, 2017"
 output: pdf_document
 ---
-
-```{r setup}
+  
+```{r setup, include=F}
 knitr::opts_chunk$set(echo = TRUE)
+require(mosaic); require(mosaicData); require(gridExtra)
 library(readxl)
+```
+```{r}
 sheet = read_excel("MTH_361_Project_1_Data.xlsx")
 ```
-
 *Part 1: Clearly state what you are investigating*
-
-We are investigating Portland's Trail Blazers' scores and verifying whether their scores at home games are greater than those of away games.
+  
+We are investigating Portland's Trail Blazers' scores and verifying whether their scores at home games are greater than those of away games. The population is the Trail Blazer's games, and the quantitative variable is the points scored in each game.
 
 $H_0: \mu_{home} = \mu_{away}$
-
+  
 $H_a: \mu_{home} > \mu_{away}$
-
+  
 *Part 2*
-
-The group selected...
+  
+The group opted to use data from the 2015-2016 Trail Blazer season. We collected the data by recording the points scored for home games and then the points scored at away games. The bias lies in the selection of only one team and one season; which, does not represent the entire league. The data is not paired.
 
 *Part 3: Collect your data!*
-
 ```{r}
 home = sheet$home; away = sheet$away
 home.mean = mean(home); away.mean = mean(away)
 home.mean; away.mean
 home.sd = sd(home); away.sd = sd(away)
 home.sd; away.sd
+home.size = length(home); away.size = length(away)
 ```
+
+Verify conditions of the test:
+
+$n_{home} \geq 30$ and $n_{away} \geq 30$. Our data passes and the Central Limit Theorem applies.
+
+`r home.size` $\geq 30$ and `r away.size` $\geq 30$.
 
 The mean for home games is `r home.mean` while the away game mean is `r away.mean`.
 As for standard deviation, the statistics are `r home.sd` and `r away.sd`, respectively.
@@ -41,5 +49,3 @@ summary(sheet)
 ```
 
 *Part 3: Describe your data*
-
-
