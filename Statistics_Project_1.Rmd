@@ -8,6 +8,8 @@ output: pdf_document
 ```{r setup, include=F}
 knitr::opts_chunk$set(echo = TRUE)
 require(mosaic); require(mosaicData); require(gridExtra)
+library("mosaic", lib.loc="~/R/win-library/3.3")
+library("gridExtra", lib.loc="~/R/win-library/3.3")
 library(readxl)
 ```
 ```{r}
@@ -46,6 +48,26 @@ As for standard deviation, the statistics are `r home.sd` and `r away.sd`, respe
 
 ```{r}
 summary(sheet)
+histo.home = histogram(home, fit="normal", width=5, center=.5)
+histo.away = histogram(away, fit="normal", width=5, center=.5)
+grid.arrange(histo.home, histo.away, ncol=1)
+```
+Examining the data, it can be seen that the home histogram has its 
+
+
+```{r}
+difference.test = t.test(home, away, data=sheet)
+p.value = difference.test$p.value * 2
 ```
 
+
 *Part 3: Describe your data*
+
+Our p-value $\approx$ `r p.value`, which is less than our $\alpha=0.05$. Hence, we reject the null hypothesis in favor of the alternate hypothesis.
+
+
+*Part 4: Create a confidence interval*
+
+```{r}
+confint(difference.test)
+```
