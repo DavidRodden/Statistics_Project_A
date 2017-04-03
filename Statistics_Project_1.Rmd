@@ -52,7 +52,7 @@ histo.home = histogram(home, fit="normal", width=5, center=.5)
 histo.away = histogram(away, fit="normal", width=5, center=.5)
 grid.arrange(histo.home, histo.away, ncol=1)
 ```
-Examining the data, it can be seen that the home histogram has its 
+Examining the histograms, it can be seen that home's data has a larger mean than the away's. In addition, the density of the datapoints contained within home's histogram is higher than that of away's.
 
 
 ```{r}
@@ -69,5 +69,25 @@ Our p-value $\approx$ `r p.value`, which is less than our $\alpha=0.05$. Hence, 
 *Part 4: Create a confidence interval*
 
 ```{r}
-confint(difference.test)
+difference.conf = confint(difference.test); difference.conf
 ```
+
+Our 95% confidence interval for this t-test is (`r round(difference.conf$lower, 4)`, `r round(difference.conf$upper, 4)`). This signifies that we are 95% confident that TrailBlazers score more at home games than they do at away games. This is due to the fact that the values are greater than 0.
+
+
+*Part 6: Describe what each group member did*
+
+* Time allocated to set up meetings in accordance with everyone's schedules
+    * Entire group
+* Discussed potential topics
+    * Entire group
+* Collected data pertaining to our topic through research
+    * Khang Tran, Michael McIntosh
+* Programmed & analyzed data
+    * Entire group
+* Knit our PDF often to make sure project was in pristine condition
+    * Entire group
+* Protected data through means of Git
+    * David Rodden
+* Follow up with instructor with questions
+    * Michael McIntosh
