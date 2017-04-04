@@ -23,11 +23,11 @@ $H_0: \mu_{home} = \mu_{away}$
   
 $H_a: \mu_{home} > \mu_{away}$
   
-*Part 2*
+*Part 2: Describe clearly how you collect your data*
   
 The group opted to use data from the 2015-2016 Trail Blazer season. We collected the data by recording the points scored for home games and then the points scored at away games. The bias lies in the selection of only one team and one season; which, does not represent the entire league. The data is not paired.
 
-*Part 3: Collect your data!*
+*Part 3: Collect your data*
 ```{r}
 home = sheet$home; away = sheet$away
 home.mean = mean(home); away.mean = mean(away)
@@ -57,7 +57,7 @@ Examining the histograms, it can be seen that home's data has a larger mean than
 
 ```{r}
 difference.test = t.test(home, away, data=sheet)
-p.value = difference.test$p.value * 2
+p.value = difference.test$p.value / 2
 ```
 
 
@@ -66,7 +66,7 @@ p.value = difference.test$p.value * 2
 Our p-value $\approx$ `r p.value`, which is less than our $\alpha=0.05$. Hence, we reject the null hypothesis in favor of the alternate hypothesis.
 
 
-*Part 4: Create a confidence interval*
+*Part 4: Create a confidence interval for the difference in means between your two groups*
 
 ```{r}
 difference.conf = confint(difference.test); difference.conf
@@ -74,20 +74,10 @@ difference.conf = confint(difference.test); difference.conf
 
 Our 95% confidence interval for this t-test is (`r round(difference.conf$lower, 4)`, `r round(difference.conf$upper, 4)`). This signifies that we are 95% confident that TrailBlazers score more at home games than they do at away games. This is due to the fact that the values are greater than 0.
 
+*Part 5: Conduct a hypothesis test for a difference in means between the two groups*
+
+To reiterate, our p-value $\approx$ `r p.value`. Our evidence from the data collected implies that, on average, the TrailBlazers score more at home games than they do at away games. Therefore, we can reject the null hypothesis at a 5% significance level. 
 
 *Part 6: Describe what each group member did*
 
-* Time allocated to set up meetings in accordance with everyone's schedules
-    * Entire group
-* Discussed potential topics
-    * Entire group
-* Collected data pertaining to our topic through research
-    * Khang Tran, Michael McIntosh
-* Programmed & analyzed data
-    * Entire group
-* Knit our PDF often to make sure project was in pristine condition
-    * Entire group
-* Protected data through means of Git
-    * David Rodden
-* Follow up with instructor with questions
-    * Michael McIntosh
+As a team, we worked on coordinating meeting times and discussing potential topics. During the meetings, Michael and Khang collected data and recorded it. After research, we discussed and analyzed it as a team. Following this, we began writing the markdown file. Every now and then, we knitted the file in order to make sure the project was in pristine condition. All data was protected by David Rodden's decision to upload resources to GitHub (https://github.com/DavidRodden/Statistics_Project_A). If any questions were had, Michael would follow up with the instructor for clarification.
